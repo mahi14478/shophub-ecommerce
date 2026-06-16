@@ -10,7 +10,7 @@ function Products({ addToCart }) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/products")
+      .get("https://shophub-ecommerce-7gbt.onrender.comapi/products")
       .then((res) => {
         setProducts(res.data);
         setLoading(false);
