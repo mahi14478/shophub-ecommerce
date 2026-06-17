@@ -6,7 +6,7 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const loginUser = () => {
-    axios.post("https://shophub-ecommerce-7gbt.onrender.comapi/auth/login", {
+    axios.post("https://shophub-ecommerce-7gbt.onrender.com/api/auth/login", {
       email,
       password,
     }).then(res => {

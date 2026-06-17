@@ -7,21 +7,29 @@ function ProductDetails() {
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
 
-  useEffect(() => {
+useEffect(() => {
+  console.log("ID from URL:", id);
+
   axios
     .get("https://shophub-ecommerce-7gbt.onrender.com/api/products")
     .then((res) => {
+      console.log("Products:", res.data);
+
       const found = res.data.find(
         (item) => item._id === id
       );
 
+      console.log("Found Product:", found);
+
       setProduct(found);
+      if (!product) {
+  return <h2>Product Not Found</h2>;
+}
     })
     .catch((err) => {
       console.log(err);
     });
 }, [id]);
-
   if (!product) return <h2>Loading...</h2>;
 
   const handleBuyNow = () => {

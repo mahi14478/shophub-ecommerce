@@ -9,14 +9,20 @@ const Register = () => {
     e.preventDefault();
      console.log("Register button clicked");
 
-    const res = await fetch("https://shophub-ecommerce-7gbt.onrender.comapi/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, email, password }),
-    });
-
+    const res = await fetch(
+  "https://shophub-ecommerce-7gbt.onrender.com/api/auth/register",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name,
+      email,
+      password,
+    }),
+  }
+);
     const data = await res.json();
     alert(data.message);
   };
