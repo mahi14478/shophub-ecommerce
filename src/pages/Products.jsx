@@ -9,8 +9,8 @@ function Products({ addToCart }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get("https://shophub-ecommerce-7gbt.onrender.comapi/products")
+   axios.get
+    ("https://shophub-ecommerce-7gbt.onrender.com/api/products")
       .then((res) => {
         setProducts(res.data);
         setLoading(false);
