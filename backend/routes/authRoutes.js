@@ -7,20 +7,28 @@ const router = express.Router();
 
 // REGISTER
 router.post("/register", async (req, res) => {
-  const { name, email, password } = req.body;
+  try {
+    const { name, email, password } = req.body;
 
-  const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-  const user = await User.create({
-    name,
-    email,
-    password: hashedPassword,
-  });
+    const user = await User.create({
+      name,
+      email,
+      password: hashedPassword,
+    });
 
-  res.json({
-    message: "Registered Successfully",
-    user,
-  });
+    res.json({
+      message: "Registered Successfully",
+      user,
+    });
+  } catch (error) {
+    console.log("REGISTER ERROR:", error);
+
+    res.status(500).json({
+      message: error.message,
+    });
+  }
 });
 
 // LOGIN
