@@ -12,22 +12,25 @@ function Register() {
     e.preventDefault();
 
     console.log("Register button clicked");
+     alert("Button Clicked");
 
     try {
-      const res = await fetch(
-        "https://shophub-ecommerce-7gbt.onrender.com/api/auth/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name,
-            email,
-            password,
-          }),
-        }
-      );
+     const res = await fetch(
+  "https://shophub-ecommerce-7gbt.onrender.com/api/auth/register",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name, email, password }),
+  }
+);
+
+console.log("Status:", res.status);
+
+const data = await res.json();
+
+console.log("Response:", data);
 
       const data = await res.json();
 
@@ -44,7 +47,7 @@ function Register() {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h2>Register Page Updated</h2>
+      <h2>Register</h2>
 
       <form onSubmit={handleSubmit}>
         <input
