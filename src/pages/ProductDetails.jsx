@@ -8,19 +8,19 @@ function ProductDetails() {
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    axios
-      .get(`https://shophub-ecommerce-7gbt.onrender.com/api/products/${id}`)
-      .then((res) => {
-        const found = res.data.find(
-          (item) => item._id === id
-        );
+  axios
+    .get("https://shophub-ecommerce-7gbt.onrender.com/api/products")
+    .then((res) => {
+      const found = res.data.find(
+        (item) => item._id === id
+      );
 
-        setProduct(found);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [id]);
+      setProduct(found);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}, [id]);
 
   if (!product) return <h2>Loading...</h2>;
 
