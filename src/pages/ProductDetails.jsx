@@ -9,7 +9,7 @@ function ProductDetails() {
 
   useEffect(() => {
     axios
-      .get("https://shophub-ecommerce-7gbt.onrender.comapi/products")
+      .get(`https://shophub-ecommerce-7gbt.onrender.com/api/products/${id}`)
       .then((res) => {
         const found = res.data.find(
           (item) => item._id === id
